@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+
+    <header class="hero">
+        <div class="container">
+        <nav>
+            <div class="logo">
+                FICH<span>.</span>
+            </div>
+            <button class="hamburger" id="hamburger">&#9776;</button>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Hello! <br>My name is <br> Fred Hortilano</h1>
+                
+                <p>CS Student   | Full-time Nurse   | Part-time Coder   | ᜐᜒᜃ᜔ᜎᜊ᜔ </p>
+               
+            
+            </div>
+                <div class="profile-flip" id="profile-flip">
+                <img src="images/hero.jpg" alt="Fred" id="profile-pic"/>
+                </div>
+
+        </div>
+        </div>
+
+    </header>
+
+    <!-- About ----------------------------------------------------------------------------------------->
+
+    <section class="about" id="about">
+        <div class="container">
+        <h2>About Me<span>.</span></h2>
+            <p class="intro">Weekly Stats:</p>
+          
+
+        <div class="stats"> <!--Improve in the futre to be dynamic-->
+
+            <div class="stat"> 
+                <h3>23</h3>  
+                <p>Espressos</p>
+            </div>
+
+            <div class="stat">
+                <h3>101</h3>
+                <p>Songs Listened To</p>
+            </div>
+
+            <div class="stat">
+                <h3>2</h3>
+                <p>Skipped Meals</p>
+            </div>
+
+            <div class="stat">
+                <h3>6</h3>
+                <p>Hours Gaming</p>
+            </div>
+
+            <div class="stat">
+                <h3>12</h3>
+                <p>Kilometres Walked</p>
+            </div>
+
+        </div>
+        </div>
+
+    </section>
+
+
+    <section class="content">
+        <div class="container">
+        <div class="card">
+
+            <h2>Work Experience</h2>
+
+            <p id="exp1">2019 - Present | Endoscopy Nurse</p>
+            <p id="exp2">2017 - 2019 | A&E Nurse</p>
+            <p id="exp3">2015 - 2016 | Med-Surg Nurse</p>
+            <p id="exp4">2013 - 2014 | Tech Support Representative [ Transcom-Comcast ] </p>
+            <p id="exp5">2013 | ER Nurse</p>
+            <p id="exp6">2012 | Tech Support Representative [ TTEC-CenturyLink ]</p>
+             
+            
+
+        </div>
+
+        <div class="card">
+
+            <h2>Currently Grinding These Skills:</h2>
+
+            <div class="skill">
+                <span><img src="images/html.svg" id="htmlicon"></span>
+                <div class="bar">
+                    <div class="fill" data-width="60"><p style="padding-left: 10px;">60%</p></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <span><img src="images/css.svg" id="cssicon"></span>
+                <div class="bar">
+                    <div class="fill" data-width="55"><p style="padding-left: 10px;">55%</p></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <span><img src="images/javascript.svg" id="javaicon"></span>
+                <div class="bar">
+                    <div class="fill" data-width="40"><p style="padding-left: 10px;">40%</p></div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </section>
+
+    <!--Projects----------------------------------------------------------------------------------------->
+
+    <section class="projects" id="projects">
+
+        <div class="container">
+        <h2>Projects<span>.</span></h2>
+        
+        <div class="projects-grid">
+
+            <div class="project-card">
+                <h3>Goose Game</h3>
+                <p>A very rudimentary game of pick up. Where a goose is supposed to pick up stars in the screen in the alloted time.</p>
+                <div class="card-tags">
+                    <span class="tag">HTML</span>
+                     <span class="tag">CSS</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Project 2</h3>
+                <p>A very awesome project that will change the world. I just dont know what it is.</p>
+                <div class="card-tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Project 3</h3>
+                 <p>A random project that will make me crazy rich. Watch out peeps.</p>
+                <div class="card-tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Project 4</h3>
+                 <p>I dont know what it will do, but I'm sure it will be solving problems.</p>
+                <div class="card-tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Project 5</h3>
+                 <p>blah blah blah</p>
+                <div class="card-tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                </div>
+            </div>
+
+        </div>
+        </div>
+
+    </section>
+
+    <!--Contact------------------------------------------------------------------------------------------>
+    <section class="contact" id="contact">
+        <div class="container">
+        <h2>Contact<span>.</span></h2>
+        <p class="contact-intro">Got a question or just want to say hi? Drop me a message.</p>
+
+            <form class="contact-form">
+                <input type="text" placeholder="Your name" />
+                <input type="email" placeholder="Your email" />
+                <textarea rows="5" placeholder="Your message"></textarea>
+                <button type="submit">Send it &#8594;</button>
+            </form>
+
+        </div>
+    </section>
+
+    <!-- Footer ---------------------------------------------------------------------------------------->
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">FICH<span>.</span></div>
+                <p>CS Student · Full-time Nurse · Part-time Coder</p>
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+            </div>
+    <p class="footer-copy">All Rights Reserved 2026.</p>
+    </footer>
+    </div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

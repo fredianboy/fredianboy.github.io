@@ -11,7 +11,9 @@
         }
     });
 
+    
 
+    /*
     //changes the profile picture on hover
     let flipContainer = document.getElementById('profile-flip');
     let profilePic = document.getElementById('profile-pic');
@@ -23,7 +25,7 @@
                 profilePic.src = 'images/hero2.png';
                 profilePic.style.opacity = '1';
             }, 300);
-        });
+    });
 
 
     flipContainer.addEventListener('mouseleave' , function(){
@@ -35,7 +37,7 @@
             }, 300);       
     });
     
-   
+   */
 
     //animates the skill load when in view/ on refresh
     let fills = document.querySelectorAll('.fill');

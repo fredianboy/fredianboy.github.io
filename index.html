@@ -21,25 +21,26 @@
             <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact">Contact</a></li>               
             </ul>
+            <button id="theme-toggle">DARK</button>
         </nav>
 
         <div class="hero-content">
             <div class="hero-text">
                 <h1>Hello! <br>My name is <br> Fred Ian Hortilano</h1>
                 
-                <p>CS Student   | Full-time Nurse   | Part-time Coder   | ᜐᜒᜃ᜔ᜎᜊ᜔ </p>
+                <p>CS Student   | Full-time Nurse   | Part-time Coder   | Gamer | Digital Artist </p>
                
             
             </div>
                 <div class="profile-flip" id="profile-flip">
-                <img src="images/hero.jpg" alt="Fred" id="profile-pic"/>
+                <img src="images/hero.jpg" alt="a photo of Fred" id="profile-pic"/>
                 </div>
-
+                
         </div>
         </div>
-
+            
     </header>
 
     <!-- About ----------------------------------------------------------------------------------------->
@@ -53,13 +54,13 @@
         <div class="stats"> <!--Improve in the futre to be dynamic-->
 
             <div class="stat"> 
-                <h3>23</h3>  
+                <h3>16</h3>  
                 <p>Espressos</p>
             </div>
 
             <div class="stat">
-                <h3>101</h3>
-                <p>Songs Listened To</p>
+                <h3>42</h3>
+                <p>Songs Played</p>
             </div>
 
             <div class="stat">
@@ -68,7 +69,7 @@
             </div>
 
             <div class="stat">
-                <h3>6</h3>
+                <h3>4</h3>
                 <p>Hours Gaming</p>
             </div>
 
@@ -105,27 +106,35 @@
             <h2>Currently Levelling Up These Skills:</h2>
 
             <div class="skill">
-                <span><img src="images/html.svg" id="htmlicon"></span>
+                <span><img src="images/html.svg" alt="HTML icon" id="htmlicon"></span>
                 <div class="bar">
-                    <div class="fill" data-width="60"><p style="padding-left: 10px;">60%</p></div>
+                    <div class="fill" data-width="78"><p style="padding-left: 10px;"><!--Percentage data will be changed by the data width--> </p></div>
                 </div>
             </div>
 
             <div class="skill">
-                <span><img src="images/css.svg" id="cssicon"></span>
+                <span><img src="images/css.svg" alt="CSS icon" id="cssicon"></span>
                 <div class="bar">
-                    <div class="fill" data-width="55"><p style="padding-left: 10px;">55%</p></div>
+                    <div class="fill" data-width="72"><p style="padding-left: 10px;"><!--Percentage data will be changed by the data width--></p></div>
                 </div>
             </div>
 
             <div class="skill">
-                <span><img src="images/javascript.svg" id="javaicon"></span>
+                <span><img src="images/javascript.svg" alt="JavaScript icon" id="javascripticon"></span>
                 <div class="bar">
-                    <div class="fill" data-width="40"><p style="padding-left: 10px;">40%</p></div>
+                    <div class="fill" data-width="63"><p style="padding-left: 10px;"><!--Percentage data will be changed by the data width--></p></div>
                 </div>
             </div>
 
-        </div>
+            <div class="skill">
+                <span><img src="images/java.svg" alt="Java icon" id="javaicon"></span>
+                <div class="bar">
+                    <div class="fill" data-width="55"><p style="padding-left: 10px;"><!--Percentage data will be changed by the data width--></p></div>
+                </div>
+            </div>
+
+
+            </div>
         </div>
     </section>
 
@@ -139,11 +148,12 @@
         <div class="projects-grid">
 
             <div class="project-card">
+                <img src="images/project1.png" alt="Screenshot of Goose Game">
                 <h3>Goose Game</h3>
                 <p>A very rudimentary game of pick up. Where a goose is supposed to pick up stars in the screen in the alloted time.</p>
                 <div class="card-tags">
-                    <span class="tag">HTML</span>
-                     <span class="tag">CSS</span>
+                    <span class="tag">JAVA</span>
+                    <span class="tag">Processing</span>
                 </div>
             </div>
 
@@ -165,23 +175,6 @@
                 </div>
             </div>
 
-            <div class="project-card">
-                <h3>Project 4</h3>
-                 <p>I dont know what it will do, but I'm sure it will be solving problems.</p>
-                <div class="card-tags">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <h3>Project 5</h3>
-                 <p>blah blah blah</p>
-                <div class="card-tags">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                </div>
-            </div>
 
         </div>
         </div>
@@ -198,9 +191,10 @@
                 <input type="text" placeholder="Your name" />
                 <input type="email" placeholder="Your email" />
                 <textarea rows="5" placeholder="Your message"></textarea>
-                <button type="submit">Send it &#8594;</button>
+                <button type="button" id="sendit">Send it &#8594;</button>
+                <p id="confirm-msg">Thanks for your message! I'll get back to you soon.</p>
             </form>
-
+                
         </div>
     </section>
 
@@ -222,7 +216,7 @@
     </div>
 
 
-<script src="script.js"></script>
+<script src="script.js" defer></script>
 
 </body>
 

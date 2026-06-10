@@ -30,12 +30,12 @@
     }
 
     /* ===================================================================================== */
-    li, #theme-toggle {
+    li {
         background-color: #696661;
         border-color: rgb(29, 27, 27);
     }
 
-    li:hover, #theme-toggle:hover {
+    li:hover {
         background-color: #3a3a3c;
     }
 
@@ -72,6 +72,11 @@
         color: #333;
     }
 
+    #education {
+        background-color: #333;
+        color:#e5e5e7;
+    }
+
     /*========================================================================================= */
     .content {
         background-color: #1c1c1e;
@@ -94,6 +99,8 @@
 
     #exp1, #exp2, #exp3, #exp4, #exp5, #exp6 {
         color: #e5e5e7;
+        border: #333;
+        background-color: #333;
     }
 
     .bar {
@@ -253,28 +260,37 @@ li  {
     background-color: #333;    
 }
 
-#theme-toggle {
-    font-size: 1em;
-    color: #f7b500;
-    padding-left: 10px;
-    padding-right: 10px;
-    border: 3px solid #333;
-    border-radius: 4px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    transition: transform 03s ease-in-out;
+.toggle {
+    width: 50px;
+    height: 30px;
     background-color: #333;
+    border-radius: 20px;
+    cursor: pointer;
+    position: relative;
 }
 
-#theme-toggle:hover{
-    background-color:#fff8f0;
-    transform: scale(1.1);
+.toggle::before {
+    position: absolute;
+    content: '';
+    width: 25px;
+    height: 25px;
+    margin: 2px;
+    border-radius: 20px;
+    background-color: #f7b500;
 }
 
-#theme-toggle:active {
-    transform: scale(0.8);
+#theme-toggle:checked + .toggle {
+    background-color: #f7b500;
+}
+#theme-toggle:checked + .toggle::before {
+    background-color: #333;
+    transform: translateX(21px);
 }
 
+/*this hides the squre checkbox*/
+#theme-toggle{
+    display: none;
+}
 
 li:hover {
     background-color: #fff8f0;
@@ -377,6 +393,7 @@ nav a{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
     gap:15px;
+    padding-bottom: 20px;
 }
 
 .stat{
@@ -402,9 +419,21 @@ nav a{
     padding: 4px 10px;
     border-radius: 7px;
 }
+
+#education {
+    background-color: #f7b500;
+}
+
+
+#sch1, #sch2 {
+    font-size: 1em;
+    font-weight: 600;
+}
+
+
+
 /*=========================================================================*/
 .content{
-    padding:60px 0;
     background-color: #fff8f0;
 }
 
@@ -412,14 +441,15 @@ nav a{
     max-width: 1460px;
     margin: 0 auto;
     padding: 0 7%;
+    padding-bottom: 80px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-    background-color: #fff8f0;
 }
 
 .skill{
     margin-bottom:10px;
+
 }
 
  #htmlicon , #cssicon, #javascripticon, #javaicon {
@@ -430,7 +460,7 @@ nav a{
  .card {
     border: 3px solid #333;
     border-radius: 10px;
-    padding: 20px;
+    padding: 30px;
     overflow-y: auto;
     max-height: 400px;
  }
@@ -449,6 +479,10 @@ nav a{
     font-size: 1.3rem;
     padding: 5px;
     font-weight: 600;
+    margin-top: 10px;
+    border: 3px solid #f7b500;
+    border-radius: 8px;
+    background-color:#f7b500;
  }
 
 .bar{
@@ -575,6 +609,9 @@ nav a{
     border-radius: 6px;
     background-color: #fff;
     outline: none;
+    resize: none;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 
@@ -650,7 +687,16 @@ footer {
 
 .footer-links {
     display: flex;
-    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-links img {
+   width: 40px;
+   height: 40px;
+ 
+   
 }
 
 .footer-links a {

@@ -101,18 +101,19 @@
 
 
     //displays message below text area when something is sent.
-    let sendButton = document.getElementById('sendit');
+    let sendButton = document.getElementById('submit');
     let confirmMessage = document.getElementById('confirm-msg');
     sendButton.addEventListener('click', function(e) {
-                
+            
             e.preventDefault();
 
-            if(validateForm() === true){
+            if(validateForm()  === true){
 
                 // clear all the input fields
                 document.querySelector('input[type="text"]').value = '';
                 document.querySelector('input[type="email"]').value = '';
                 document.querySelector('textarea').value = '';
+                document.querySelector('input[type="date"]').value = '';
                 // dsiplay aknowledgement message
                 confirmMessage.classList.add('visible');
                 // fade out after 3 seconds
@@ -120,10 +121,11 @@
                 confirmMessage.classList.remove('visible');
                 }, 3000);
             }
+                     
     });
 
 
-    //toggle for dark theme (still WIP)
+    //toggle for dark theme
     let darkMode = false;
     document.getElementById('theme-toggle').addEventListener('click', function(){
             if (darkMode === false) {
@@ -136,3 +138,31 @@
                 darkMode = false;
             }
     });
+
+
+
+ function checkDate() {
+    // get the input element
+    let startInput = document.getElementById("date");
+
+    let today = new Date(); // get todays date
+    let year = today.getFullYear(); //extract  year
+    let month = today.getMonth() + 1;  // extract Month() starts at 0 so we add 1
+    let day = today.getDate(); //extract date
+
+  
+    if (month < 10) {
+        month = "0" + month; //add 0 if les than 10
+    }
+
+    if (day < 10) {
+        day = "0" + day; // add 0 if less than 10
+    }
+
+    let formattedDate = year + "-" + month + "-" + day;
+
+    // set the min attribute on the input so past dates can't be selected
+    startInput.min = formattedDate;
+};
+
+checkDate(); // disable prev date selection.

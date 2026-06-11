@@ -107,7 +107,7 @@
             
             e.preventDefault();
 
-            if(validateForm()  === true){
+            if(validateForm() && checkDate()  === true){
 
                 // clear all the input fields
                 document.querySelector('input[type="text"]').value = '';
@@ -139,9 +139,22 @@
             }
     });
 
+    function checkDate(){
+        let today = new Date();
+        today.setHours(0,0,0,0);
+        let inputDate = new Date(document.getElementById('date').value);
+        inputDate.setHours(0,0,0,0);
 
+        if (inputDate <= today){
+            alert("Please choose minimum 1 day from today");
+            return false;
+        } else {        
+            return true;
+        }      
+        console.log()
+    };
 
- function checkDate() {
+ function minimumDate() {
     // get the input element
     let startInput = document.getElementById("date");
 
@@ -165,4 +178,4 @@
     startInput.min = formattedDate;
 };
 
-checkDate(); // disable prev date selection.
+minimumDate(); // disable prev date selection.

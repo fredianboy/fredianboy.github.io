@@ -107,7 +107,7 @@
             
             e.preventDefault();
 
-            if(validateForm() && checkDate()  === true){
+            if(validateForm() && checkDate() && checkEmail()  === true){
 
                 // clear all the input fields
                 document.querySelector('input[type="text"]').value = '';
@@ -146,12 +146,31 @@
         inputDate.setHours(0,0,0,0);
 
         if (inputDate <= today){
+            console.log(fire);
             alert("Please choose minimum 1 day from today");
             return false;
         } else {        
             return true;
         }      
         console.log()
+    };
+
+    function checkEmail(){
+        let email = document.getElementById('email').value;
+        let confirmEmail = document.getElementById('confirm-email').value;
+
+        console.log(email);
+        console.log(confirmEmail);
+
+        if(email !== confirmEmail){
+            alert("Emails do not match please recheck!");
+            return false;
+        }
+
+        if(email === ''){
+            alert('Please enter your email');
+            return false;
+        }
     };
 
  function minimumDate() {

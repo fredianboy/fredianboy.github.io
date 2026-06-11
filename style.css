@@ -716,7 +716,11 @@ footer {
     text-align: center;
     font-size: 0.85rem;
     color:#fff8f0;
-    border-top: 1px solid #444;
+    border-top: 2px solid #444;
+}
+
+.footer-copy a {
+    color: white;
 }
 /*==================================================================================================*/
 @media (max-width: 904px) {

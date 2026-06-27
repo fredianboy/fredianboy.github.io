@@ -1,4 +1,3 @@
-
 //swaps the nav to a hamburger menu when width is decreased
 let hamburger = document.getElementById('hamburger');
 let navMenu = document.querySelector('nav ul');
@@ -10,7 +9,6 @@ hamburger.addEventListener('click', function () {
         navMenu.classList.add('open');
     }
 });
-
 
 
 /*
@@ -64,7 +62,6 @@ for (let i = 0; i < fills.length; i++) {
 };
 
 //loops through each skillbar then sets the width + the text
-
 for (let i = 0; i < fills.length; i++) {
     let currentBar = fills[i];
     let width = currentBar.getAttribute('data-width');
@@ -72,59 +69,158 @@ for (let i = 0; i < fills.length; i++) {
     label.textContent = width + '%';
 };
 
-//checks all forms are filled up correctly before sending info.
+
+//FORM VALIDATION
+function setError(fieldId, message) {
+    let field = document.getElementById(fieldId);
+    let errorSpan = document.getElementById(fieldId + '-error');
+
+    if (message === '') {
+        errorSpan.textContent = '';
+        errorSpan.classList.remove('show');
+        if (field) {
+            field.classList.remove('invalid');
+        }
+    } else {
+        errorSpan.textContent = message;
+        errorSpan.classList.add('show');
+        if (field) {
+            field.classList.add('invalid');
+        }
+    }
+};
+
+// checks all fields are filled correctly. returns true only if everything is ok.
 function validateForm() {
-    let name = document.querySelector('input[type="text"]').value.trim();
-    let email = document.querySelector('input[type="email"]').value.trim();
-    let message = document.querySelector('textarea').value.trim();
+    let valid = true;
     let validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+    let name = document.getElementById('name').value.trim();
+    let email = document.getElementById('email').value.trim();
+    let confirmEmail = document.getElementById('confirm-email').value.trim();
+    let message = document.getElementById('message').value.trim();
+    let dateValue = document.getElementById('date').value;
+
+    // clear all previous errors first
+    setError('name', '');
+    setError('email', '');
+    setError('confirm-email', '');
+    setError('message', '');
+    setError('date', '');
+
+    // name
     if (name === '') {
-        alert('Please enter your name.');
-        return false;
+        setError('name', 'Please enter your name.');
+        valid = false;
     }
+
+    // email
     if (email === '') {
-        alert('Please enter your email.');
-        return false;
+        setError('email', 'Please enter your email.');
+        valid = false;
+    } else if (validEmail.test(email) === false) {
+        setError('email', 'Please enter a valid email address.');
+        valid = false;
     }
-    if (validEmail.test(email) === false) {
-        alert('Please enter a valid email address.');
-        return false;
+
+    // confirm email
+    if (confirmEmail === '') {
+        setError('confirm-email', 'Please confirm your email.');
+        valid = false;
+    } else if (email !== confirmEmail) {
+        setError('confirm-email', 'Emails do not match, please recheck.');
+        valid = false;
     }
+
+    // message
     if (message === '') {
-        alert('Please enter a message.');
-        return false;
+        setError('message', 'Please enter a message.');
+        valid = false;
     }
-    return true;
+
+    // date (must be at least 1 day from today)
+    let today = new Date();
+    today.setHours(0, 0, 0, 0);
+    let inputDate = new Date(dateValue);
+    inputDate.setHours(0, 0, 0, 0);
+
+    if (dateValue === '' || inputDate <= today) {
+        setError('date', 'Please choose a date at least 1 day from today.');
+        valid = false;
+    }
+
+    return valid;
+};
+
+// live validation: clear a field's error as soon as the user starts fixing it
+let liveFields = ['name', 'email', 'confirm-email', 'message', 'date'];
+for (let i = 0; i < liveFields.length; i++) {
+    let el = document.getElementById(liveFields[i]);
+    if (el) {
+        el.addEventListener('input', function () {
+            setError(liveFields[i], '');
+        });
+    }
 };
 
 
-//displays message below text area when something is sent.
-let sendButton = document.getElementById('submit');
-let confirmMessage = document.getElementById('confirm-msg');
-sendButton.addEventListener('click', function (e) {
 
+// shows a summary of submitted content on success
+let sendButton = document.getElementById('submit');
+let summaryBox = document.getElementById('form-summary');
+
+sendButton.addEventListener('click', function (e) {
     e.preventDefault();
 
-    if (validateForm() && checkDate() && checkEmail()) {
+    if (validateForm()) {
+        // grab the values before clearing
+        let name = document.getElementById('name').value.trim();
+        let email = document.getElementById('email').value.trim();
+        let message = document.getElementById('message').value.trim();
+        let date = document.getElementById('date').value;
 
-        // clear all the input fields
-        document.querySelector('input[type="text"]').value = '';
-        document.querySelector('input[type="email"]').value = '';
-        document.querySelector('textarea').value = '';
-        document.querySelector('input[type="date"]').value = '';
-        // dsiplay aknowledgement message
-        confirmMessage.classList.add('visible');
-        // fade out after 3 seconds
+        // build the summary using textContent (safe against HTML injection)
+        summaryBox.innerHTML = '';
+
+        let heading = document.createElement('h3');
+        heading.textContent = "Thanks for your message!";
+        summaryBox.appendChild(heading);
+
+        let rows = [
+            ['Name', name],
+            ['Email', email],
+            ['Preferred date', date],
+            ['Message', message]
+        ];
+
+        for (let i = 0; i < rows.length; i++) {
+            let p = document.createElement('p');
+            let label = document.createElement('strong');
+            label.textContent = rows[i][0] + ': ';
+            p.appendChild(label);
+            p.appendChild(document.createTextNode(rows[i][1]));
+            summaryBox.appendChild(p);
+        }
+
+        summaryBox.classList.add('show');
+
+        // clear the input fields
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('confirm-email').value = '';
+        document.getElementById('message').value = '';
+        document.getElementById('date').value = '';
+
+        // fade the bubble out after 5 seconds
         setTimeout(function () {
-            confirmMessage.classList.remove('visible');
-        }, 3000);
+            summaryBox.classList.remove('show');
+        }, 5000);
     }
-
 });
 
 
-//toggle for dark theme
+// THEME TOGGLE
+
 let darkMode = false;
 document.getElementById('theme-toggle').addEventListener('click', function () {
     if (darkMode === false) {
@@ -138,59 +234,27 @@ document.getElementById('theme-toggle').addEventListener('click', function () {
     }
 });
 
-function checkDate() {
-    let today = new Date();
-    today.setHours(0, 0, 0, 0);
-    let inputDate = new Date(document.getElementById('date').value);
-    inputDate.setHours(0, 0, 0, 0);
 
-    if (inputDate <= today) {
-        alert("Please choose minimum 1 day from today");
-        return false;
-    }
-
-    return true;
-};
-
-function checkEmail() {
-    let email = document.getElementById('email').value;
-    let confirmEmail = document.getElementById('confirm-email').value;
-
-    console.log(email);
-    console.log(confirmEmail);
-
-    if (email === '') {
-        alert('Please enter your email');
-        return false;
-    }
-
-    if (email !== confirmEmail) {
-        alert("Emails do not match please recheck!");
-        return false;
-    }
-
-    return true;
-};
+//Date input disables past dates and sets the minimum date to today
 
 function minimumDate() {
     // get the input element
-    let startInput = document.getElementById("date");
+    let startInput = document.getElementById('date');
 
     let today = new Date(); // get todays date
-    let year = today.getFullYear(); //extract  year
-    let month = today.getMonth() + 1;  // extract Month() starts at 0 so we add 1
-    let day = today.getDate(); //extract date
-
+    let year = today.getFullYear(); // extract year
+    let month = today.getMonth() + 1; // extract Month() starts at 0 so we add 1
+    let day = today.getDate(); // extract date
 
     if (month < 10) {
-        month = "0" + month; //add 0 if les than 10
+        month = '0' + month; // add 0 if less than 10
     }
 
     if (day < 10) {
-        day = "0" + day; // add 0 if less than 10
+        day = '0' + day; // add 0 if less than 10
     }
 
-    let formattedDate = year + "-" + month + "-" + day;
+    let formattedDate = year + '-' + month + '-' + day;
 
     // set the min attribute on the input so past dates can't be selected
     startInput.min = formattedDate;
